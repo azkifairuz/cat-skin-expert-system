@@ -28,14 +28,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.catcareexpertsystem.ui.theme.ButtonPrimary
 import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
+import com.example.catcareexpertsystem.ui.theme.Primary
 
 @Composable
 fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF1E1E2E))
+            .background(Primary)
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -52,7 +54,7 @@ fun HomeScreen() {
 
         Button(
             onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors( Color(0xFF6200EE)),
+            colors = ButtonDefaults.buttonColors( ButtonPrimary),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
