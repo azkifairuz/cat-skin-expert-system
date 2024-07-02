@@ -24,8 +24,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.catcareexpertsystem.history.DiagnosesHistory
@@ -36,6 +38,7 @@ import com.example.catcareexpertsystem.ui.theme.Primary
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListPenyakitScreen(listPenyakit: List<Penyakit>) {
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -68,13 +71,23 @@ fun ListPenyakitScreen(listPenyakit: List<Penyakit>) {
                 .background(Primary)
                 .padding(vertical = it.calculateTopPadding(), horizontal = 16.dp)
         ) {
-            LazyColumn {
-                items(listPenyakit) { penyakit ->
-                    CardListPenyakit(
-                        penyakitName = penyakit.penyakit,
-                        deskripsi = penyakit.deskripsi
-                    )
+            if (listPenyakit.isEmpty()) {
+                Text(
+                    text = "...loading",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = Color.White,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
 
+            } else {
+                LazyColumn {
+                    items(listPenyakit) { penyakit ->
+                        CardListPenyakit(
+                            penyakitName = penyakit.penyakit,
+                            deskripsi = penyakit.deskripsi
+                        )
+
+                    }
                 }
             }
         }
@@ -113,9 +126,9 @@ fun ListPenyakitScreenPreview() {
     CatcareexpertsystemTheme {
 
         val sampleHistory = listOf(
-            Penyakit("Cacingan", "banyak cacing",),
-            Penyakit("Cacingan", "banyak cacing",),
-            Penyakit("Cacingan", "banyak cacing",),
+            Penyakit(1, "p1", "Cacingan", "banyak cacing"),
+            Penyakit(1, "p1", "Cacingan", "banyak cacing"),
+            Penyakit(1, "p1", "Cacingan", "banyak cacing"),
         )
         ListPenyakitScreen(listPenyakit = sampleHistory)
     }
