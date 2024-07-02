@@ -1,5 +1,6 @@
 package com.example.catcareexpertsystem.diagnose
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,16 +36,23 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.catcareexpertsystem.route.Graph
 import com.example.catcareexpertsystem.ui.theme.ButtonPrimary
 import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
 import com.example.catcareexpertsystem.ui.theme.Primary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InputpetNameScreen() {
+fun InputpetNameScreen(navController: NavHostController) {
+    val context = LocalContext.current
+    var text by remember { mutableStateOf("") }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -90,7 +98,7 @@ fun InputpetNameScreen() {
                     .align(Alignment.Center)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    var text by remember { mutableStateOf("") }
+
                     Text(
                         text = "Form Nama Hewan",
                         modifier = Modifier.fillMaxWidth(),
@@ -112,7 +120,7 @@ fun InputpetNameScreen() {
                         label = { Text("Nama Hewan Anda") }
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors( ButtonPrimary), modifier = Modifier.align(Alignment.End)) {
+                    Button(onClick = { savePetName(context,text,navController) }, colors = ButtonDefaults.buttonColors( ButtonPrimary), modifier = Modifier.align(Alignment.End)) {
                         Text(text = "Lanjut", color = Color.White)
                     }
                 }
@@ -120,12 +128,18 @@ fun InputpetNameScreen() {
         }
     }
 }
-
+fun savePetName(context: Context, petName: String, navController: NavHostController) {
+    val sharedPreferences = context.getSharedPreferences("PetPreferences", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    editor.putString("temp_pet_name", petName)
+    editor.apply()
+    navController.navigate(Graph.SCREEN_QUESTION)
+}
 @Preview
 @Composable
 private fun InputFormPet() {
     CatcareexpertsystemTheme {
-        InputpetNameScreen()
+        InputpetNameScreen(rememberNavController())
     }
 
 }
