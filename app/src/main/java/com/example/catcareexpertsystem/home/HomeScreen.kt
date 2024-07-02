@@ -28,12 +28,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.catcareexpertsystem.route.Graph
 import com.example.catcareexpertsystem.ui.theme.ButtonPrimary
 import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
 import com.example.catcareexpertsystem.ui.theme.Primary
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navHostController: NavHostController
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,7 +63,7 @@ fun HomeScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
-            .clip(RoundedCornerShape(12.dp))
+                .clip(RoundedCornerShape(12.dp))
         ) {
         Icon(
             imageVector = Icons.Default.PlayArrow,
@@ -71,12 +76,12 @@ fun HomeScreen() {
     }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navHostController.navigate(Graph.SCREEN_PENYAKIT) },
             colors = ButtonDefaults.buttonColors( Color(0xFF03DAC5)),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
-            .clip(RoundedCornerShape(12.dp))
+                .clip(RoundedCornerShape(12.dp))
         ) {
         Icon(
             imageVector = Icons.Default.List,
@@ -89,7 +94,7 @@ fun HomeScreen() {
     }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navHostController.navigate(Graph.SCREEN_HISTORY)},
             colors = ButtonDefaults.buttonColors( Color(0xFFBB86FC)),
             modifier = Modifier
                 .fillMaxWidth()
@@ -111,6 +116,8 @@ fun HomeScreen() {
 @Composable
 private fun HomePreview() {
     CatcareexpertsystemTheme {
-        HomeScreen()
+        HomeScreen(
+            navHostController = rememberNavController()
+        )
     }
 }

@@ -80,10 +80,10 @@ fun HistoryScreen(historyList: List<DiagnosesHistory>) {
 fun CardHistory(petName: String, diagnoseResult: String, date: String) {
     Card(
         colors = CardColors(
-            containerColor = MaterialTheme.colorScheme.surface,
+            containerColor = Color.White,
             contentColor = Color.Black,
             disabledContentColor = Color.Black,
-            disabledContainerColor = MaterialTheme.colorScheme.surface
+            disabledContainerColor = Color.White
         ),
         modifier = Modifier
             .fillMaxWidth()

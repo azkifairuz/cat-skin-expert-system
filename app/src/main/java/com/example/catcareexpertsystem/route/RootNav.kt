@@ -18,7 +18,7 @@ fun RootNav(
     val listPenyakit by penyakitViewModel.data.collectAsState()
     NavHost(navController = navController, route = Graph.ROOT, startDestination = Graph.HOME){
         composable(Graph.HOME){
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable(Graph.SCREEN_PENYAKIT){
             ListPenyakitScreen(listPenyakit = listPenyakit)
