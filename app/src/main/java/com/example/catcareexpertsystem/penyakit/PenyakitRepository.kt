@@ -9,7 +9,7 @@ class PenyakitRepository {
 
     suspend fun getData(): List<Penyakit> {
         return  supabase
-            .from("my_table")
+            .from("penyakit")
             .select(columns = Columns.ALL)
             .decodeList<Penyakit>()
     }
