@@ -13,4 +13,11 @@ class GejalaRepository {
             .select(Columns.ALL)
             .decodeList<Gejala>()
     }
+
+    suspend fun getGejalaPenyakit(): List<GejalaPenyakit> {
+        return supabase
+            .from("penyakit_gejala")
+            .select(Columns.ALL)
+            .decodeList<GejalaPenyakit>()
+    }
 }

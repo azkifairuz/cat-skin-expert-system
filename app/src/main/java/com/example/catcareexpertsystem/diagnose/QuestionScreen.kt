@@ -44,12 +44,11 @@ fun QuestionScreen() {
         currentQuestion?.let {
             QuestionCard(
                 question = it,
-                onYesClick = { viewmodel.answerQuestion(it.penyakitCode, 0.6) },
-                onNoClick = { viewmodel.answerQuestion(it.penyakitCode, cf = 0.4) }
+                onYesClick = { viewmodel.answerQuestion(it.gejalaCode, 0.6) },
+                onNoClick = { viewmodel.answerQuestion(it.gejalaCode, cf = 0.4) }
             )
         }
-        if (currentQuestionIndex  > question.size -1 ) {
-
+        if (currentQuestionIndex  > question.size - 1 ) {
                 AnswerHistory(answers = answers)
         }
     }
@@ -75,7 +74,7 @@ fun AnswerHistory(answers: List<Answer>) {
     }
 }
 @Composable
-fun QuestionCard(question: Penyakit, onYesClick: () -> Unit, onNoClick: () -> Unit) {
+fun QuestionCard(question: Gejala, onYesClick: () -> Unit, onNoClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -83,7 +82,7 @@ fun QuestionCard(question: Penyakit, onYesClick: () -> Unit, onNoClick: () -> Un
 
         ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = question.penyakit, style = MaterialTheme.typography.headlineSmall)
+            Text(text = question.gejalaName, style = MaterialTheme.typography.headlineSmall)
             Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),

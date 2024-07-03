@@ -16,3 +16,13 @@ data class Gejala(
     val gejalaName: String
 )
 
+@Serializable
+data class GejalaPenyakit(
+    @SerialName("gejala_code")
+    val gejalaCode: String,
+    @SerialName("penyakit_code")
+    val penyakitCode: String,
+    @SerialName("certainty_factor")
+    val nilaiCf: Double,
+)
+

@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class DiagnoseViewmodel : ViewModel() {
-    private val repository = PenyakitRepository()
-    private val _quetion = MutableStateFlow<List<Penyakit>>(emptyList())
-    val quetion: StateFlow<List<Penyakit>> = _quetion
+    private val repository = GejalaRepository()
+    private val _quetion = MutableStateFlow<List<Gejala>>(emptyList())
+    val quetion: StateFlow<List<Gejala>> = _quetion
 
     private val _currentQuestionIndex = MutableStateFlow(0)
     val currentQuestionIndex: StateFlow<Int> = _currentQuestionIndex
