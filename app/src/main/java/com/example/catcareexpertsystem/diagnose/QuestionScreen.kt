@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
@@ -52,21 +53,23 @@ fun QuestionScreen() {
                 AnswerHistory(answers = answers)
         }
     }
-
 }
+
 @Composable
 fun AnswerHistory(answers: List<Answer>) {
-    Column {
+    Column(modifier = Modifier.background(Primary).padding(16.dp)) {
         Text(
             text = "Riwayat Jawaban:",
             style = MaterialTheme.typography.headlineSmall,
+            color = Color.White,
             modifier = Modifier.padding(bottom = 16.dp)
         )
         answers.forEach { answer ->
             Text(
                 text = "Pertanyaan: ${answer.penyakitCode}, Nilai: ${answer.cf}",
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 8.dp),
+                color = Color.White,
             )
         }
     }
