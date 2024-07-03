@@ -24,11 +24,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.catcareexpertsystem.penyakit.Penyakit
 import com.example.catcareexpertsystem.route.Graph
 import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
 import com.example.catcareexpertsystem.ui.theme.Primary
@@ -90,13 +88,23 @@ fun ResultScreen(results: List<Result>, viewModel: DiagnoseViewmodel, navControl
 
         Spacer(modifier = Modifier.height(16.dp))
 
+
         highestResult?.let {
-            Text(
-                text = "Kesimpulan: ${it.penyakit} dengan tingkat kepercayaan ${"%.2f".format(it.cf)}%",
-                style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(bottom = 16.dp),
-                color = Color.White
-            )
+            if (it.cf > 0){
+                Text(
+                    text = "Kesimpulan: ${it.penyakit} dengan tingkat kepercayaan ${"%.2f".format(it.cf)}%",
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(bottom = 16.dp),
+                    color = Color.White
+                )
+            }else{
+                Text(
+                    text = "Kesimpulan: kucing anda tidak sakit",
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(bottom = 16.dp),
+                    color = Color.White
+                )
+            }
         }
 
         Button(
