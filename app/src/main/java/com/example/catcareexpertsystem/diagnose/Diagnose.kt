@@ -4,10 +4,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 data class Answer(
-    val penyakitCode: String,
+    val gejalaCode: String,
     val cf:Double
 )
 
+@Serializable
+data class Result(
+    val penyakit: String,
+    val cf: Double
+)
 @Serializable
 data class Gejala(
     @SerialName("gejala_code")

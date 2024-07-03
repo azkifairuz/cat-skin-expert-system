@@ -33,8 +33,8 @@ fun QuestionScreen() {
     val question = viewmodel.quetion.collectAsState().value
     val currentQuestionIndex = viewmodel.currentQuestionIndex.collectAsState().value
     val currentQuestion = question.getOrNull(currentQuestionIndex)
-
-    val answers = viewmodel.answer.collectAsState().value
+    val isFinish = viewmodel.isFinish.collectAsState().value
+    val results = viewmodel.results.collectAsState().value
 
     Box(modifier = Modifier
         .fillMaxSize()
@@ -48,27 +48,29 @@ fun QuestionScreen() {
                 onNoClick = { viewmodel.answerQuestion(it.gejalaCode, cf = 0.4) }
             )
         }
-        if (currentQuestionIndex  > question.size - 1 ) {
-                AnswerHistory(answers = answers)
+        if (currentQuestionIndex > question.size - 1 && isFinish){
+            ResultScreen(results = results)
         }
+
     }
 }
 
 @Composable
-fun AnswerHistory(answers: List<Answer>) {
-    Column(modifier = Modifier.background(Primary).padding(16.dp)) {
+fun ResultScreen(results: List<Result>) {
+    Column {
         Text(
-            text = "Riwayat Jawaban:",
-            style = MaterialTheme.typography.headlineSmall,
-            color = Color.White,
-            modifier = Modifier.padding(bottom = 16.dp)
+            text = "Hasil Diagnosa:",
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 16.dp),
+            color = Color.White
+
         )
-        answers.forEach { answer ->
+        results.forEach { result ->
             Text(
-                text = "Pertanyaan: ${answer.penyakitCode}, Nilai: ${answer.cf}",
+                text = "${result.penyakit} : ${"%.2f".format(result.cf)}%",
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(bottom = 8.dp),
-                color = Color.White,
+                color = Color.White
             )
         }
     }
