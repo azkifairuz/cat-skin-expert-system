@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.catcareexpertsystem.diagnose.InputpetNameScreen
+import com.example.catcareexpertsystem.diagnose.QuestionScreen
+import com.example.catcareexpertsystem.history.HistoryScreen
 import com.example.catcareexpertsystem.home.HomeScreen
 import com.example.catcareexpertsystem.penyakit.ListPenyakitScreen
 import com.example.catcareexpertsystem.penyakit.PenyakitViewModel
@@ -26,6 +28,12 @@ fun RootNav(
         }
         composable(Graph.SCREEN_PET_NAME){
             InputpetNameScreen(navController)
+        }
+        composable(Graph.SCREEN_QUESTION){
+            QuestionScreen(navController)
+        }
+        composable(Graph.SCREEN_HISTORY){
+            HistoryScreen()
         }
     }
 

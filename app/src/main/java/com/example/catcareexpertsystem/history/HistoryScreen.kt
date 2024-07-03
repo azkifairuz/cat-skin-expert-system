@@ -21,23 +21,30 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.catcareexpertsystem.diagnose.DiagnoseViewmodel
 import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
 import com.example.catcareexpertsystem.ui.theme.Primary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HistoryScreen(historyList: List<DiagnosesHistory>) {
+fun HistoryScreen() {
+    val context = LocalContext.current
+    val viewModel: DiagnoseViewmodel = viewModel()
+    val historyList = viewModel.getDiagnoseHistory(context)
+
     Scaffold(
         topBar = {
             TopAppBar(
-                colors = TopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Primary,
-                    scrolledContainerColor = Primary,
                     navigationIconContentColor = Color.White,
                     titleContentColor = Color.White,
                     actionIconContentColor = Color.White
@@ -76,6 +83,8 @@ fun HistoryScreen(historyList: List<DiagnosesHistory>) {
     }
 }
 
+
+
 @Composable
 fun CardHistory(petName: String, diagnoseResult: String, date: String) {
     Card(
@@ -104,11 +113,5 @@ fun CardHistory(petName: String, diagnoseResult: String, date: String) {
 fun HistoryScreenPreview() {
     CatcareexpertsystemTheme {
 
-        val sampleHistory = listOf(
-            DiagnosesHistory("Kitty", "Cacingan", "2024-06-01"),
-            DiagnosesHistory("Tom", "Dermatofitosis", "2024-06-02"),
-            DiagnosesHistory("Garfield", "Feline Chlamydia", "2024-06-03")
-        )
-        HistoryScreen(historyList = sampleHistory)
     }
 }

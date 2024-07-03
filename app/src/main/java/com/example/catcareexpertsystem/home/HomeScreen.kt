@@ -58,7 +58,7 @@ fun HomeScreen(
         )
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navHostController.navigate(Graph.SCREEN_PET_NAME) },
             colors = ButtonDefaults.buttonColors( ButtonPrimary),
             modifier = Modifier
                 .fillMaxWidth()

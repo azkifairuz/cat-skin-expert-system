@@ -40,6 +40,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -52,6 +53,7 @@ import com.example.catcareexpertsystem.ui.theme.Primary
 @Composable
 fun InputpetNameScreen(navController: NavHostController) {
     val context = LocalContext.current
+    val viewmodel: DiagnoseViewmodel = viewModel()
     var text by remember { mutableStateOf("") }
     Scaffold(
         topBar = {
@@ -120,7 +122,10 @@ fun InputpetNameScreen(navController: NavHostController) {
                         label = { Text("Nama Hewan Anda") }
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    Button(onClick = { savePetName(context,text,navController) }, colors = ButtonDefaults.buttonColors( ButtonPrimary), modifier = Modifier.align(Alignment.End)) {
+                    Button(onClick = {
+                        viewmodel.clearResults()
+                        savePetName(context,text,navController)
+                                     }, colors = ButtonDefaults.buttonColors( ButtonPrimary), modifier = Modifier.align(Alignment.End)) {
                         Text(text = "Lanjut", color = Color.White)
                     }
                 }
