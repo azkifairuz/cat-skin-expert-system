@@ -1,12 +1,13 @@
-package com.example.catcareexpertsystem.diagnose
+package com.example.goatexpertsystem.diagnose
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.catcareexpertsystem.history.DiagnosesHistory
-import com.example.catcareexpertsystem.penyakit.Penyakit
-import com.example.catcareexpertsystem.penyakit.PenyakitRepository
+import com.example.goatexpertsystem.history.DiagnosesHistory
+import com.example.goatexpertsystem.penyakit.Penyakit
+import com.example.goatexpertsystem.penyakit.PenyakitRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -27,6 +28,9 @@ class DiagnoseViewmodel : ViewModel() {
 
     private val _gejalaPenyakit = MutableStateFlow<List<GejalaPenyakit>>(emptyList())
     private val _penyakit = MutableStateFlow<List<Penyakit>>(emptyList())
+    private val _solusi = MutableStateFlow<List<Solusi>>(emptyList())
+
+    val solusi: StateFlow<List<Solusi>> = _solusi
 
     private val _results = MutableStateFlow<List<Result>>(emptyList())
     val results: StateFlow<List<Result>> = _results
@@ -34,6 +38,7 @@ class DiagnoseViewmodel : ViewModel() {
         fetchQuestion()
         fetchPenyakit()
         fetchGejalaPenyakit()
+        fetchSolusi()
     }
 
     private val _answer = MutableStateFlow<List<Answer>>(emptyList())
@@ -59,6 +64,14 @@ class DiagnoseViewmodel : ViewModel() {
             _penyakit.value = result
         }
     }
+
+    private  fun fetchSolusi() {
+        viewModelScope.launch {
+            val solusi = repository.getSolution()
+            _solusi.value = solusi
+        }
+    }
+
     fun answerQuestion(questionCode: String, cf: Double) {
         _answer.value += Answer(questionCode, cf)
         if (_currentQuestionIndex.value < _quetion.value.size - 1) {
@@ -89,7 +102,7 @@ class DiagnoseViewmodel : ViewModel() {
         val results = penyakitCFMap.map { (penyakitCode, cfList) ->
             val penyakitName = _penyakit.value.find { it.penyakitCode == penyakitCode }?.penyakit ?: "Unknown"
             val combinedCF = combineCFSequentially(cfList)
-            Result(penyakitName, combinedCF * 100)
+            Result(penyakitName,penyakitCode, combinedCF * 100)
         }.sortedByDescending { it.cf }
 
         _results.value = results
@@ -136,6 +149,20 @@ class DiagnoseViewmodel : ViewModel() {
         return historySet.map { entry ->
             val parts = entry.split("|")
             DiagnosesHistory(parts[0], parts[1], parts[2])
+        }
+    }
+
+    fun showSolution(): List<Solusi> {
+        val  highestCf = _results.value.maxByOrNull { it.cf }
+        if (highestCf != null) {
+            Log.e("solution", "showSolution:${highestCf.penyakitCode} ", )
+        }
+        return  if (highestCf != null ){
+            val filteredSolutions = _solusi.value.filter { it.diesesCode == highestCf.penyakitCode }
+            Log.e("solution", "showSolution: filtered solutions = $filteredSolutions")
+            filteredSolutions
+        }else{
+            emptyList()
         }
     }
 }

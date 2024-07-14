@@ -1,5 +1,6 @@
-package com.example.catcareexpertsystem.home
+package com.example.goatexpertsystem.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,10 +32,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.catcareexpertsystem.route.Graph
-import com.example.catcareexpertsystem.ui.theme.ButtonPrimary
-import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
-import com.example.catcareexpertsystem.ui.theme.Primary
+import com.example.goatexpertsystem.R
+import com.example.goatexpertsystem.route.Graph
+import com.example.goatexpertsystem.ui.theme.ButtonPrimary
+import com.example.goatexpertsystem.ui.theme.CatcareexpertsystemTheme
+import com.example.goatexpertsystem.ui.theme.Primary
 
 @Composable
 fun HomeScreen(
@@ -47,8 +50,15 @@ fun HomeScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.icon_kambing),
+            contentDescription = "Goat Health Check",
+            modifier = Modifier
+                .size(200.dp)
+                .padding(bottom = 24.dp)
+        )
         Text(
-            text = "Cek Kesehatan Kucing Anda",
+            text = "Cek Kesehatan Kambing Anda",
             style = TextStyle(
                 color = Color.White,
                 fontSize = 24.sp,

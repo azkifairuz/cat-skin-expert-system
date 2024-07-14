@@ -1,6 +1,6 @@
-package com.example.catcareexpertsystem.penyakit
+package com.example.goatexpertsystem.penyakit
 
-import com.example.catcareexpertsystem.utils.SupabaseClient
+import com.example.goatexpertsystem.utils.SupabaseClient
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
 

@@ -1,4 +1,4 @@
-package com.example.catcareexpertsystem.history
+package com.example.goatexpertsystem.history
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,9 +28,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.catcareexpertsystem.diagnose.DiagnoseViewmodel
-import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
-import com.example.catcareexpertsystem.ui.theme.Primary
+import com.example.goatexpertsystem.diagnose.DiagnoseViewmodel
+import com.example.goatexpertsystem.ui.theme.CatcareexpertsystemTheme
+import com.example.goatexpertsystem.ui.theme.Primary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

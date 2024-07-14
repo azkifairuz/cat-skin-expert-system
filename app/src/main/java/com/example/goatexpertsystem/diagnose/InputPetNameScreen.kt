@@ -1,4 +1,4 @@
-package com.example.catcareexpertsystem.diagnose
+package com.example.goatexpertsystem.diagnose
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
@@ -21,10 +20,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
@@ -41,13 +38,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.catcareexpertsystem.route.Graph
-import com.example.catcareexpertsystem.ui.theme.ButtonPrimary
-import com.example.catcareexpertsystem.ui.theme.CatcareexpertsystemTheme
-import com.example.catcareexpertsystem.ui.theme.Primary
+import com.example.goatexpertsystem.route.Graph
+import com.example.goatexpertsystem.ui.theme.ButtonPrimary
+import com.example.goatexpertsystem.ui.theme.CatcareexpertsystemTheme
+import com.example.goatexpertsystem.ui.theme.Primary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -102,7 +98,7 @@ fun InputpetNameScreen(navController: NavHostController) {
                 Column(modifier = Modifier.padding(16.dp)) {
 
                     Text(
-                        text = "Form Nama Hewan",
+                        text = "Form Nama Kambing",
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.headlineSmall
@@ -119,7 +115,7 @@ fun InputpetNameScreen(navController: NavHostController) {
                         ),
                         value = text,
                         onValueChange = { text = it },
-                        label = { Text("Nama Hewan Anda") }
+                        label = { Text("Nama kambing Anda") }
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(onClick = {

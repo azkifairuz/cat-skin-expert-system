@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.catcareexpertsystem"
+    namespace = "com.example.goatexpertsystem"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.catcareexpertsystem"
+        applicationId = "com.example.goatexpertsystem"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

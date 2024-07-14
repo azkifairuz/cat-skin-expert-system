@@ -1,18 +1,20 @@
-package com.example.catcareexpertsystem.diagnose
+package com.example.goatexpertsystem.diagnose
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 data class Answer(
     val gejalaCode: String,
-    val cf:Double
+    val cf: Double
 )
 
 @Serializable
 data class Result(
     val penyakit: String,
+    val penyakitCode: String,
     val cf: Double
 )
+
 @Serializable
 data class Gejala(
     @SerialName("gejala_code")
@@ -37,8 +39,8 @@ data class Solusi(
     val codeSolution: String,
     @SerialName("penyakit_code")
     val diesesCode: String,
-    @SerialName("gejala_code")
-    val symptomsCode: String
+    @SerialName("solusi")
+    val solution: String
 
 )
 

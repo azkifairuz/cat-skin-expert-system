@@ -1,4 +1,4 @@
-package com.example.catcareexpertsystem.route
+package com.example.goatexpertsystem.route
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -6,12 +6,12 @@ import androidx.compose.runtime.getValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.example.catcareexpertsystem.diagnose.InputpetNameScreen
-import com.example.catcareexpertsystem.diagnose.QuestionScreen
-import com.example.catcareexpertsystem.history.HistoryScreen
-import com.example.catcareexpertsystem.home.HomeScreen
-import com.example.catcareexpertsystem.penyakit.ListPenyakitScreen
-import com.example.catcareexpertsystem.penyakit.PenyakitViewModel
+import com.example.goatexpertsystem.diagnose.InputpetNameScreen
+import com.example.goatexpertsystem.diagnose.QuestionScreen
+import com.example.goatexpertsystem.history.HistoryScreen
+import com.example.goatexpertsystem.home.HomeScreen
+import com.example.goatexpertsystem.penyakit.ListPenyakitScreen
+import com.example.goatexpertsystem.penyakit.PenyakitViewModel
 
 @Composable
 fun RootNav(

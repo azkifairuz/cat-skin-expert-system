@@ -1,4 +1,4 @@
-package com.example.catcareexpertsystem.ui.theme
+package com.example.goatexpertsystem.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

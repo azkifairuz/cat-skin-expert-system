@@ -1,4 +1,4 @@
-package com.example.catcareexpertsystem.utils
+package com.example.goatexpertsystem.utils
 
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest

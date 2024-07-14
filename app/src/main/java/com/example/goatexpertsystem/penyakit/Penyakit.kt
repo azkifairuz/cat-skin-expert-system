@@ -1,4 +1,4 @@
-package com.example.catcareexpertsystem.penyakit
+package com.example.goatexpertsystem.penyakit
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

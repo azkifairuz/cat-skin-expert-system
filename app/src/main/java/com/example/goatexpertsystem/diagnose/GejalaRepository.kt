@@ -1,6 +1,6 @@
-package com.example.catcareexpertsystem.diagnose
+package com.example.goatexpertsystem.diagnose
 
-import com.example.catcareexpertsystem.utils.SupabaseClient
+import com.example.goatexpertsystem.utils.SupabaseClient
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
 

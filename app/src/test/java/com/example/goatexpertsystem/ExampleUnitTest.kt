@@ -1,4 +1,4 @@
-package com.example.catcareexpertsystem
+package com.example.goatexpertsystem
 
 import org.junit.Test
 
