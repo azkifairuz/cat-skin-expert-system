@@ -20,4 +20,11 @@ class GejalaRepository {
             .select(Columns.ALL)
             .decodeList<GejalaPenyakit>()
     }
+
+    suspend fun getSolution(): List<Solusi> {
+        return  supabase
+            .from("solusi")
+            .select(Columns.ALL)
+            .decodeList<Solusi>()
+    }
 }
