@@ -48,8 +48,7 @@ fun QuestionScreen(navController: NavHostController) {
         currentQuestion?.let {
             QuestionCard(
                 question = it,
-                onYesClick = { viewmodel.answerQuestion(it.gejalaCode, 0.6) },
-                onNoClick = { viewmodel.answerQuestion(it.gejalaCode, cf = 0.0) }
+                onAnswerClick = { cf -> viewmodel.answerQuestion(it.gejalaCode, cf) }
             )
         }
         if (currentQuestionIndex > question.size - 1 && isFinish){
@@ -120,27 +119,39 @@ fun ResultScreen(results: List<Result>, viewModel: DiagnoseViewmodel, navControl
 }
 
 @Composable
-fun QuestionCard(question: Gejala, onYesClick: () -> Unit, onNoClick: () -> Unit) {
+fun QuestionCard(question: Gejala, onAnswerClick: (Double) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
-
-        ) {
+    ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = question.gejalaName, style = MaterialTheme.typography.headlineSmall)
             Spacer(modifier = Modifier.height(8.dp))
-            Row(
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                verticalArrangement = Arrangement.SpaceBetween
             ) {
-                Button(onClick = onYesClick) {
-                    Text(text = "Yes (0.6)")
-                }
-                Button(onClick = onNoClick) {
-                    Text(text = "No (0.4)")
-                }
+                AnswerButton(answer = "Pasti", cf = 1.0, onClick = onAnswerClick)
+                AnswerButton(answer = "Hampir Pasti", cf = 0.8, onClick = onAnswerClick)
+                AnswerButton(answer = "Kemungkinan Besar", cf = 0.6, onClick = onAnswerClick)
+                AnswerButton(answer = "Mungkin", cf = 0.4, onClick = onAnswerClick)
+                AnswerButton(answer = "Tidak Tahu", cf = 0.2, onClick = onAnswerClick)
+                AnswerButton(answer = "Tidak", cf = 0.0, onClick = onAnswerClick)
             }
+        }
+    }
+}
+
+@Composable
+fun AnswerButton(answer: String, cf: Double, onClick: (Double) -> Unit) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+    ) {
+        Button(onClick = { onClick(cf) }, modifier = Modifier.fillMaxWidth()) {
+            Text(text = "$answer ($cf)")
         }
     }
 }

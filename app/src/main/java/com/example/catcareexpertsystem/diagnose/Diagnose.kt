@@ -31,3 +31,14 @@ data class GejalaPenyakit(
     val nilaiCf: Double,
 )
 
+@Serializable
+data class Solusi(
+    @SerialName("kode_solusi")
+    val codeSolution: String,
+    @SerialName("penyakit_code")
+    val diesesCode: String,
+    @SerialName("gejala_code")
+    val symptomsCode: String
+
+)
+
